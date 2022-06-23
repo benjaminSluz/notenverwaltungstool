@@ -68,6 +68,10 @@ function avgNote(noten) {
   margin: 0;
   justify-content: center;
 }
+ul {
+  padding-inline-start: 20px;
+  border: 1px black solid;
+}
 .Fach {
   font-weight: bolder;
 }
