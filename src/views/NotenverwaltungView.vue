@@ -10,9 +10,10 @@
               <button @click="deleteNote(fach, index)">❌</button>
             </span>
           </li>
-          <li>
+          <div>
+            <span>{{ avgNote(noten.noten) }}</span>
             <input type="number" @keyup.enter="addNote($event, fach)" />
-          </li>
+          </div>
         </ul>
       </li>
     </ul>
@@ -42,6 +43,19 @@ function addNote(e, fach) {
   let newNote = Math.min(6, Math.max(1, parseInt(e.target.value)));
   Fächer.value[fach].noten.push(newNote);
 }
+function avgNote(noten) {
+  let notenArray = [...noten];
+  if (notenArray.length == 0) return 0;
+  let avg = 0;
+  let result;
+  notenArray.forEach((e) => {
+    avg += e;
+  });
+  avg /= notenArray.length;
+
+  result = Math.floor(avg) + Math.round((avg % 1) * 2) / 2;
+  return parseFloat(result).toFixed(2);
+}
 </script>
 <style>
 .home {
@@ -51,7 +65,8 @@ function addNote(e, fach) {
   margin: 0;
   justify-content: center;
 }
-ul#Fächer {
-  width: 50%;
+#Fächer {
+  border: black 1px solid;
+  height: fit-content;
 }
 </style>
