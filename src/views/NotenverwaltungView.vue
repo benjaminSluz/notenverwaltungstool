@@ -35,12 +35,12 @@ const Fächer = ref({
   WUR: { noten: [] },
 });
 function deleteNote(fach, note) {
-  console.log(Fächer.value[fach], fach, note);
-  Fächer.value[fach].splice(note, 1);
+  console.log(Fächer.value[fach].noten, fach, note);
+  Fächer.value[fach].noten.splice(note, 1);
 }
 function addNote(e, fach) {
   let newNote = Math.min(6, Math.max(1, parseInt(e.target.value)));
-  Fächer.value[fach].push(newNote);
+  Fächer.value[fach].noten.push(newNote);
 }
 </script>
 <style>
